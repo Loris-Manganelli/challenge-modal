@@ -1,4 +1,5 @@
 from .base import DatasetGenerator
+import json
 
 
 class SimplePromptsDatasetGenerator(DatasetGenerator):
@@ -14,12 +15,17 @@ class SimplePromptsDatasetGenerator(DatasetGenerator):
 
     def create_prompts(self, labels_names):
         prompts = {}
-        for label in labels_names:
+
+        with open("prompts.json", "r") as file:
+            prompts_data = json.load(file)
+
+        for label, data in prompts_data.items():
             prompts[label] = []
             prompts[label].append(
-                {
-                    "prompt": f"An image of a {label} cheese",
-                    "num_images": self.num_images_per_label,
-                }
-            )
+            {
+                "prompt": data["prompt"],
+                "num_images": self.num_images_per_label,
+            }
+        )
+
         return prompts
