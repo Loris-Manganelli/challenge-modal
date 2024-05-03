@@ -2,7 +2,7 @@ from .base import DatasetGenerator
 import json
 
 
-class SimplePromptsDatasetGenerator(DatasetGenerator):
+class FirstWeekGenerator(DatasetGenerator):
     def __init__(
         self,
         generator,
