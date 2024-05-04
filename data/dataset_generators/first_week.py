@@ -16,7 +16,7 @@ class FirstWeekGenerator(DatasetGenerator):
     def create_prompts(self, labels_names):
         prompts = {}
 
-        with open("/home/cheese/challenge-modal/prompts.json", "r") as file:
+        with open("/X/MODAL/Challenge/challenge-modal/prompts.json", "r") as file:
             prompts_data = json.load(file)
 
         for label, data in prompts_data.items():

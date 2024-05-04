@@ -24,7 +24,7 @@ def train(cfg):
             images, labels = batch
             images = images.to(device)
             labels = labels.to(device)
-            preds = model(images)
+            preds = model(images)                  #predictions du modele
             loss = loss_fn(preds, labels)
             logger.log({"loss": loss.detach().cpu().numpy()})
             optimizer.zero_grad()
@@ -64,7 +64,7 @@ def train(cfg):
                     (preds.argmax(1) == labels).sum().detach().cpu().numpy()
                 )
                 num_samples += len(images)
-            epoch_loss /= num_samples
+            epoch_loss /= num_samples      #perte totale divisée par le nombre d'images dans le dataset
             epoch_acc = epoch_num_correct / num_samples
             val_metrics[f"{val_set_name}/loss"] = epoch_loss
             val_metrics[f"{val_set_name}/acc"] = epoch_acc
