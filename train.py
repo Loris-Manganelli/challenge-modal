@@ -87,9 +87,9 @@ def train(cfg):
             }
         )
         if(k%10 == 0):
-            torch.save(model.state_dict(), cfg.checkpoint_path + "_" + str(k))
+            torch.save(model.state_dict(), cfg.checkpoint_path + "_" + str(k) + ".pt")
         k=k+1
-    torch.save(model.state_dict(), cfg.checkpoint_path + "_final")
+    torch.save(model.state_dict(), cfg.checkpoint_path + "_final.pt")
 
 
 if __name__ == "__main__":
