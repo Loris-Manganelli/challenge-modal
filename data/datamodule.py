@@ -2,6 +2,8 @@ from torch.utils.data import DataLoader, ConcatDataset
 from torchvision.datasets import ImageFolder
 from hydra.utils import instantiate
 import torch
+import torchvision.transforms
+from torchvision.transforms import v2
 
 
 class DataModule:
@@ -81,7 +83,7 @@ class DataModule:
         )
         self.batch_size = batch_size
         self.num_workers = num_workers
-        self.idx_to_class = {v: k for k, v in self.dataset.class_to_idx.items()}
+        self.idx_to_class = {v: k for k, v in self.dataset1.class_to_idx.items()}
 
     def train_dataloader(self):
         return DataLoader(

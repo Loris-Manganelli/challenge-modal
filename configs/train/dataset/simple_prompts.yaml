@@ -4,7 +4,7 @@ defaults:
   - train_transform3: simple3
   - train_transform4: simple4
   - train_transform5: simple5
-  - test_transform: simple1
+  - test_transform: simple
 
 name: simple_prompts
 num_classes: 37
