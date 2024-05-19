@@ -52,7 +52,7 @@ def create_submission(cfg):
         images = images.to(device)
         preds = model(images)
         preds = preds.argmax(1)
-        preds = [class_names[pred] for pred in preds.cpu().numpy()]
+        preds = [class_names[pred].upper() for pred in preds.cpu().numpy()]
         submission = pd.concat(
             [
                 submission,
