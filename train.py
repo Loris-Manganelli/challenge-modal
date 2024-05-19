@@ -17,6 +17,7 @@ def train(cfg):
     train_loader = datamodule.train_dataloader() #on applique la méhode train_dataloader à cet objet
     val_loaders = datamodule.val_dataloader()
 
+    k = 0
     for epoch in tqdm(range(cfg.epochs)):
         epoch_loss = 0
         epoch_num_correct = 0
@@ -86,7 +87,10 @@ def train(cfg):
                 **val_metrics,
             }
         )
-    torch.save(model.state_dict(), cfg.checkpoint_path)
+        if(k%10 == 0):
+            torch.save(model.state_dict(), cfg.checkpoint_path + "_" + str(k) + ".pt")
+        k=k+1
+    torch.save(model.state_dict(), cfg.checkpoint_path + "_final.pt")
 
 
 if __name__ == "__main__":

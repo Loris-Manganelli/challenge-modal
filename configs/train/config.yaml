@@ -4,7 +4,7 @@ defaults:
   - optim: adamw
   - loss_fn: cross_entropy
 
-epochs: 2
+epochs: 200
 
 datamodule:
   _target_: data.datamodule.DataModule
@@ -21,7 +21,7 @@ datamodule:
 
 data_dir: ${root_dir}/dataset
 root_dir:  ${hydra:runtime.cwd}
-checkpoint_path: ${root_dir}/checkpoints/${experiment_name}.pt
+checkpoint_path: ${root_dir}/ckpt/${experiment_name}
 
 experiment_name: ${model.name}_${dataset.name}
 hydra:
