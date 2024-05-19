@@ -11,9 +11,10 @@ def train(cfg):
     model = hydra.utils.instantiate(cfg.model.instance).to(device)
     optimizer = hydra.utils.instantiate(cfg.optim, params=model.parameters())
     loss_fn = hydra.utils.instantiate(cfg.loss_fn)
-    datamodule = hydra.utils.instantiate(cfg.datamodule)
 
-    train_loader = datamodule.train_dataloader()
+    datamodule = hydra.utils.instantiate(cfg.datamodule) #objet de classe DataModule avec tous les paramètres de config
+
+    train_loader = datamodule.train_dataloader() #on applique la méhode train_dataloader à cet objet
     val_loaders = datamodule.val_dataloader()
 
     k = 0
